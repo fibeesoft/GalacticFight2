@@ -10,10 +10,14 @@ public class KamikazeSpawner : MonoBehaviour
 
     IEnumerator SpawnKamikaze(){
         float randomNumber = Random.Range(-3.3f, 3.3f);
-        GameObject h = Instantiate(KamikazeSpawnEffectPrefab, new Vector3(transform.position.x, randomNumber, 0f), Quaternion.identity);
+        if(KamikazeSpawnEffectPrefab){
+            GameObject h = Instantiate(KamikazeSpawnEffectPrefab, new Vector3(transform.position.x, randomNumber, 0f), Quaternion.identity);
+        }
         yield return new WaitForSeconds(0.5f);
-        GameObject g = Instantiate(KamikazePrefab, new Vector3(transform.position.x, randomNumber, 0f), Quaternion.identity);
-        g.transform.SetParent(gameObject.transform);
+        if(KamikazePrefab){
+            GameObject g = Instantiate(KamikazePrefab, new Vector3(transform.position.x, randomNumber, 0f), Quaternion.identity);
+            g.transform.SetParent(gameObject.transform);
+        }
         yield return new WaitForSeconds(spawningDelay);
         StartCoroutine(SpawnKamikaze());
     }

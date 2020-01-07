@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
         moveX = Input.GetAxisRaw("Horizontal");
         moveY = Input.GetAxisRaw("Vertical");
 
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetButtonDown("Fire1")){
             Attack();
         }
     }
